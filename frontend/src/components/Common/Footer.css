@@ -1,0 +1,21 @@
+/* Footer.css */
+
+footer {
+  background-color: rgba(242, 242, 242, 0.8);
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.foot-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center the content */
+}
+
+p {
+  margin: 0;
+}

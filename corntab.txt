@@ -1,0 +1,32 @@
+
+
+# Update PDR every minute
+* * * * * /usr/bin/python3 /home/lora/Desktop/Lora_GW/backend_server/manage.py update_pdr >> /home/lora/Desktop/Lora_GW/backend_server/Logs/update_pdr.log 2>&1
+
+# Run Lora message receiver on reboot
+@reboot /usr/bin/python3 /home/lora/Desktop/Lora_GW/backend_server/recive_lora_msg.py >> /home/lora/Desktop/Lora_GW/backend_server/Logs/recive_lora_msg.log 2>&1
+
+# Run Lora message receiver on reboot
+@reboot /usr/bin/python3 /home/lora/Desktop/Lora_GW/backend_server/sending_lora_msg.py >> /home/lora/Desktop/Lora_GW/backend_server/Logs/sending_log_msg.log 2>&1
+
+# Run Django development server on reboot (Note: This is for development purposes only)
+@reboot /usr/bin/python3 /home/lora/Desktop/Lora_GW/backend_server/manage.py runserver 0.0.0.0:8000 >> /home/lora/Desktop/Lora_GW/backend_server/Logs/runserver.log 2>&1
+
+# Start React app using Yarn on reboot
+@reboot /bin/bash -c "cd /home/lora/Desktop/Lora_GW/frontend/ && /usr/bin/env yarn start 0.0.0.0:3000 >> /home/lora/Desktop/Lora_GW/backend_server/Logs/frontend.log 2>&1"
+
+# Remove log files daily at midnight
+0 * * * * find /home/lora/Desktop/Lora_GW/backend_server/Logs/ -name '*.log' -type f -mtime +0 -exec rm {} \;
+
+
+
+sudo crontab -e -> for edit
+sudo service cron start -> for start
+sudo tail -f /var/log/syslog | grep CRON -> for see the logs
+sudo service cron stop -> for stop the cron
+
+
+
+cat /home/lora/Desktop/Lora_GW/backend_server/Logs/update_pdr.log
+cat /home/lora/Desktop/Lora_GW/backend_server/Logs/recive_lora_msg.log
+cat /home/lora/Desktop/Lora_GW/backend_server/Logs/runserver.log

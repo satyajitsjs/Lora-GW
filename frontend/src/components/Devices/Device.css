@@ -1,0 +1,44 @@
+/* Add this to your CSS file */
+.existing-nodes {
+    margin-top: 20px;
+  }
+  
+  .nodes-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .node-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Media query for desktop view */
+  @media (min-width: 601px) {
+    .existing-nodes ul {
+      display: table;
+      width: 100%;
+    }
+  
+    .node-item {
+      display: table-row;
+    }
+  
+    .node-item strong {
+      display: table-cell;
+      padding-right: 10px;
+      font-weight: bold;
+    }
+  }
+  
+  /* Media query for mobile view */
+  @media (max-width: 600px) {
+    .node-item {
+      display: block;
+    }
+  
+    .node-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  
